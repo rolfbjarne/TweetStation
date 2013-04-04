@@ -150,12 +150,12 @@ namespace TweetStation
 			Root = new RootElement (Locale.GetText ("Settings")){
 				MakeAccounts (),
 				new Section (){
-					new RootElement (Locale.GetText ("Settings")){
+					(Element) new RootElement (Locale.GetText ("Settings")){
 						new Section (Locale.GetText ("Style")){
 							(selfOnRight = new BooleanElement (Locale.GetText ("My tweets on right"), (cellStyle & 1) == 0)),
 							(shadows = new BooleanElement (Locale.GetText ("Avatar shadows"), (cellStyle & 2) == 0)),
 							(autoFav = new BooleanElement (Locale.GetText ("Favorite on Retweet"), Util.Defaults.IntForKey ("disableFavoriteRetweets") == 0)),
-							(compress = new RootElement (Locale.GetText ("Image Compression"), new RadioGroup ("group", Util.Defaults.IntForKey ("sizeCompression"))) {
+							(Element) (compress = new RootElement (Locale.GetText ("Image Compression"), new RadioGroup ("group", Util.Defaults.IntForKey ("sizeCompression"))) {
 								new Section () {
 									new RadioElement (Locale.GetText ("Maximum")),
 									new RadioElement (Locale.GetText ("Medium")),
@@ -176,32 +176,32 @@ namespace TweetStation
 				},
 				
 				new Section (){
-					new RootElement (Locale.GetText ("About")){
+					(Element) new RootElement (Locale.GetText ("About")){
 						new Section (){
 							new HtmlElement (Locale.GetText ("About and Credits"), aboutUrl),
 							new HtmlElement (Locale.GetText ("Web site"), "http://tirania.org/tweetstation")
 						},
 						new Section (){
-							Twitterista ("migueldeicaza"),
-							Twitterista ("itweetstation"),
+							(Element) Twitterista ("migueldeicaza"),
+							(Element) Twitterista ("itweetstation"),
 						},
 						new Section (Locale.GetText ("Music")){
-							Twitterista ("kmacleod"),
+							(Element) Twitterista ("kmacleod"),
 						},
 						new Section (Locale.GetText ("Conspirators")) {
-							Twitterista ("JosephHill"),
-							Twitterista ("kangamono"),
-							Twitterista ("lauradeicaza"),
-							Twitterista ("mancha"),
-							Twitterista ("mjhutchinson"),
+							(Element) Twitterista ("JosephHill"),
+							(Element) Twitterista ("kangamono"),
+							(Element) Twitterista ("lauradeicaza"),
+							(Element) Twitterista ("mancha"),
+							(Element) Twitterista ("mjhutchinson"),
 						},
 						new Section (Locale.GetText ("Contributors")){
-							Twitterista ("martinbowling"),
-							Twitterista ("conceptdev"),
+							(Element) Twitterista ("martinbowling"),
+							(Element) Twitterista ("conceptdev"),
 						},
 						new Section (Locale.GetText ("Includes X11 code from")) {
-							Twitterista ("escoz"),
-							Twitterista ("praeclarum"),
+							(Element) Twitterista ("escoz"),
+							(Element) Twitterista ("praeclarum"),
 						}
 					}
 				}

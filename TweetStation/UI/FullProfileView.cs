@@ -119,10 +119,10 @@ namespace TweetStation
 			Root = new RootElement (user.Screenname){
 				main,
 				new Section () {
-					TimelineRootElement.MakeTimeline (user.Screenname, Locale.Format ("{0:#,#} tweets", user.StatusesCount), tweetsUrl, user),
-					TimelineRootElement.MakeFavorites (user.Screenname, Locale.Format ("{0:#,#} favorites", user.FavCount), favoritesUrl, null),
-					new UserRootElement (user, Locale.Format ("{0:#,#} friends", user.FriendsCount), friendsUrl),
-					new UserRootElement (user, Locale.Format ("{0:#,#} followers", user.FollowersCount), followersUrl),
+					(Element) TimelineRootElement.MakeTimeline (user.Screenname, Locale.Format ("{0:#,#} tweets", user.StatusesCount), tweetsUrl, user),
+					(Element) TimelineRootElement.MakeFavorites (user.Screenname, Locale.Format ("{0:#,#} favorites", user.FavCount), favoritesUrl, null),
+					(Element) new UserRootElement (user, Locale.Format ("{0:#,#} friends", user.FriendsCount), friendsUrl),
+					(Element) new UserRootElement (user, Locale.Format ("{0:#,#} followers", user.FollowersCount), followersUrl),
 				},
 				sfollow,
 			};

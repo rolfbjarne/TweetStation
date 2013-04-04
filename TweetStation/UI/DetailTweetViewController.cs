@@ -100,7 +100,7 @@ namespace TweetStation
 				main,
 				replySection,
 				new Section () {
-					userTimeline
+					(Element) userTimeline
 				}
 			};
 		}
@@ -119,7 +119,7 @@ namespace TweetStation
 			if (tweet.InReplyToStatus != 0){
 				var in_reply = new ConversationRootElement (Locale.Format ("In reply to: {0}", tweet.InReplyToUserName), tweet);
 			                        
-				main.Add (in_reply);
+				main.Add ((Element) in_reply);
 			}
 		}
 	

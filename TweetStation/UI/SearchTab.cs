@@ -69,14 +69,14 @@ namespace TweetStation
 			
 			Root = new RootElement (Locale.GetText ("Search")) {
 				new Section () {
-					new RootElement (Locale.GetText ("Search"), x => new TwitterTextSearch ()),
+					(Element) new RootElement (Locale.GetText ("Search"), x => new TwitterTextSearch ()),
 #if true
 					new LoadMoreElement (Locale.GetText ("Nearby"), Locale.GetText ("Finding your position"), (x) => StartGeoSearch (x)) {
 						Accessory = UITableViewCellAccessory.DisclosureIndicator,
 						Alignment = UITextAlignment.Left
 					},
 #endif
-					new RootElement (Locale.GetText ("Go to User"), x => new SearchUser ())
+					(Element) new RootElement (Locale.GetText ("Go to User"), x => new SearchUser ())
 				},
 				lists,
 			};
@@ -200,7 +200,7 @@ namespace TweetStation
 					trends = new Section (Locale.GetText ("Trends"));
 					
 					for (int i = 0; i < jtrends.Count; i++)
-						trends.Add (new SearchElement (jtrends [i]["name"], jtrends [i]["query"]));
+						trends.Add ((Element) new SearchElement (jtrends [i]["name"], jtrends [i]["query"]));
 					Root.Add (trends);
 				} catch (Exception e){
 					Console.WriteLine (e);
@@ -226,7 +226,7 @@ namespace TweetStation
 						string name = list ["full_name"];
 						string listname = list ["name"];
 						string url = "http://api.twitter.com/1/" + account.Username + "/lists/" + listname + "/statuses.json";
-						lists.Insert (pos++, UITableViewRowAnimation.Fade, TimelineRootElement.MakeList (name, listname, url));
+						lists.Insert (pos++, UITableViewRowAnimation.Fade, (Element) TimelineRootElement.MakeList (name, listname, url));
 					}
 				} catch (Exception e){
 					Console.WriteLine (e);
@@ -273,7 +273,7 @@ namespace TweetStation
 
 			editor.NavigationItem.RightBarButtonItem.Enabled = !String.IsNullOrEmpty (name.Value);
 			editor.Root = new RootElement (Locale.GetText ("New List")) {
-				new Section () { name, description, privacy }
+				new Section () { (Element) name, (Element) description, (Element) privacy }
 			};
 			ActivateController (editor);
 		}		
